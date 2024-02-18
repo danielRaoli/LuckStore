@@ -1,0 +1,138 @@
+header{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(43, 0, 67);
+}
+
+nav{
+    height: inherit;
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+}
+
+.logo{
+    display: flex;
+    height: inherit;
+    align-items: center;
+}
+
+.logo img{
+    height: 100px;
+}
+
+.logo span{
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-left: -10px;
+}
+
+.menu{
+    border: none;
+    background-color: transparent;
+    font-size: 1.75rem;
+    cursor: pointer;
+    transition: 300ms ease-in;
+}
+
+.menu:hover{
+    transform:  scale(.95);
+}
+
+
+.menu-open{
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    background-color: rgb(43, 0, 67);
+    overflow: hidden;
+    transition: 500ms ease-in;
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    transition: 500ms ease-in;
+
+}
+
+
+
+.menu-open > h3{
+    font-weight: 400;
+    font-size: 2rem;
+    margin-top: 20%;
+}
+
+.menu-open .menu-btn-close{
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: 3%;
+    color: whitesmoke;
+    font-size: 2.7rem;
+    cursor: pointer;
+    left: 80%;
+    transition: 500ms ease;
+    width: 60px;
+    height: 60px;
+}
+
+.menu-open .menu-btn-close:hover{
+    background-color: rgb(27, 0, 52);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.menu-action{
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: 10%;
+    padding: .75rem;
+    transition:ease-in 500ms ;
+}
+
+.menu-action:hover{
+    background-color:rgb(27, 0, 52);
+    
+    border-radius: .25rem;
+}
+
+.menu-action, h3{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-open.-hide {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    padding: 0;
+}
+
+.menu-open.-hide > h3{
+    font-size: 0;
+}
+
+.menu-open.-hide > button{
+    display: none;
+
+}
+
+
+
+@media screen and (min-width:850px){
+    .menu-open{
+        width: 400px;
+
+    }
+}
