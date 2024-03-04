@@ -22,8 +22,19 @@ main {
 }
 
 .filters{
+    width: 100%;
+    padding-left: 3.25rem;
+    height: 80px;
+}
+
+.pagination{
+    width: inherit;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    height: inherit;
+    align-items: end;
+    gap: 1rem;
+
 }
 
 .card-product{
@@ -68,17 +79,18 @@ main {
     color: rgb(43, 0, 67);
 }
 
-.pagination > button{
-    background-color:rgb(109, 49, 142) ; 
+.btn-pagination{
+    background-color:transparent; 
     border-radius: .25rem;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     border: none;
-    color: white;
+    color:rgb(43, 0, 67);
+    border: 1px solid rgb(15, 6, 19);
     cursor: pointer;
 }
 
-.pagination > button:hover{
+.btn-pagination:hover{
     transform: scale(1.05);
 }
 

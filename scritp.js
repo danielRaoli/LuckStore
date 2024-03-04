@@ -76,10 +76,32 @@ const products = [
 ]
 
 
+const take = 10;
+const quantityForPage = Math.ceil(products.length / take);
+let page = 0;
+let productsBackup = [...products];
+
 const containerProducts = document.querySelector('.container');
 
-products.forEach((product) => {
-    containerProducts.insertAdjacentHTML('beforeend',`                <article class="card-product">
+function Paginantion(skip = 0) {
+    console.log(productsBackup.length)
+    console.log(products)
+    const skipedProducts = productsBackup.splice(skip);
+
+    return skipedProducts.slice(0, take)
+
+}
+
+
+
+function mostrarProdutos() {
+    let skip = (page*10)
+    productsBackup = [...products];
+    let productsPage = Paginantion(skip);
+    console.log(productsPage)
+    
+    productsPage.forEach((product) => {
+        containerProducts.insertAdjacentHTML('beforeend', `                <article class="card-product">
     <img src="Assets/Images/${product.image}.jpg" alt="">
     <div class="card-product-bottom">
         <span>${product.name}</span>
@@ -88,17 +110,48 @@ products.forEach((product) => {
         </a>
     </div>
 </article>`)
-});
+    });
+
+}
+
+mostrarProdutos();
+const paginationSection = document.querySelector('.pagination');
+console.log(paginationSection)
+function CriarBotoesPaginacao(quantidaBotoes) {
+    for (let i = 0; i < quantidaBotoes; i++) {
+        paginationSection.insertAdjacentHTML('beforeend', `<button data-value="${i}" class="btn-pagination">${i + 1}</button>`);
+    }
+
+    const btns = document.querySelectorAll('.btn-pagination');
+
+    btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            page = btn.getAttribute('data-value');
+            let productsAMostra = document.querySelectorAll('.card-product');
+            productsAMostra.forEach((product) => {
+                product.remove();
+            })
+            console.log(productsBackup.length)
+            mostrarProdutos();
+        })
+    })
+}
+
+CriarBotoesPaginacao(quantityForPage);
+
+
+
+
 
 const btnCloseMenu = document.querySelector('.menu-btn-close');
 const btnOpenMenu = document.querySelector('.menu')
 const menu = document.querySelector('.menu-open');
 
-btnCloseMenu.addEventListener('click',()=>{
+btnCloseMenu.addEventListener('click', () => {
     menu.classList.add('-hide')
 });
 
-btnOpenMenu.addEventListener('click',() => {
+btnOpenMenu.addEventListener('click', () => {
     menu.classList.remove('-hide')
 });
 
